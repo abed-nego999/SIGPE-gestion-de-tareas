@@ -28,7 +28,7 @@ exports.create_a_sigpe = (req, res) => {
 
 
 exports.read_a_sigpe = (req, res) => {
-  Sigpe.findById(req.params.sigpeId, (err, sigpe) => {
+  Sigpe.findBy({Numero: req.params.sigpeId}, (err, sigpe) => {
     if (err) {
       res.send(err);
     }
@@ -38,7 +38,7 @@ exports.read_a_sigpe = (req, res) => {
 
 
 exports.update_a_sigpe = (req, res) => {
-  Sigpe.findOneAndUpdate({_id: req.params.sigpeId}, req.body, {new: true}, (err, sigpe) => {
+  Sigpe.findOneAndUpdate({Numero: req.params.sigpeId}, req.body, {new: true}, (err, sigpe) => {
     if (err) {
       res.send(err);
     }
