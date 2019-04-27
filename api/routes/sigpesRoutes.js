@@ -7,7 +7,6 @@ module.exports = function(app) {
     .get(sigpes.list_all_sigpes)
     .post(sigpes.create_a_sigpe);
 
-
   app.route('/sigpes/:sigpeId')
     .get(sigpes.read_a_sigpe)
     .put(sigpes.update_a_sigpe)

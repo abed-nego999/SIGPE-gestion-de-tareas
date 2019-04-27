@@ -2,15 +2,6 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var StateSchema = new Schema({
-    Name: {
-        type: String
-    },
-    Color: {
-        type: String
-    }
-});
-
 var SigpeSchema = new Schema({
   Numero: {
     type: String,
@@ -38,7 +29,9 @@ var SigpeSchema = new Schema({
     type: String
   },
   Estado: {
-    type: StateSchema
+    type: Schema.Types.Mixed,
+    default: {Name: "Verde",
+        Color: "#00FF00"}
   },
   Fecha_llegada: {
     type: Date,
