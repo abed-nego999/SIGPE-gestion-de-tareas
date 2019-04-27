@@ -14,32 +14,38 @@ var StateSchema = new Schema({
 var SigpeSchema = new Schema({
   Numero: {
     type: String,
-    required: 'Número de SIGPE necesario'
+    required: "Campo 'Numero' obligatorio"
   },
   Tipo: {
     type: String,
     enum: ['Petición', 'Incidencia'],
     default: 'Petición'
   },
+  Ambito: {
+    type: String,
+    enum: ['Privado', 'Público'],
+    default: 'Privado'
+  },
   Reutilizada: {
-      type: String
+      type: Boolean,
+      default: false
   },
   Titulo: {
-      type: String
+      type: String,
+      required: "Campo 'Titulo' obligatorio"
   },
   Descripcion: {
     type: String
   },
   Estado: {
-    Type: StateSchema
+    type: StateSchema
   },
   Fecha_llegada: {
     type: Date,
-    default: Date.now
+    required: "Campo 'Fecha_llegada' obligatorio"
   },
   Fecha_salida: {
-    type: Date,
-    default: Date.now
+    type: Date
   },
   Tecnico_devoteam: {
      type: String
