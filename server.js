@@ -8,15 +8,7 @@ var express = require('express'),
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 mongoose.connect("mongodb+srv://cluster0-f3avm.mongodb.net/test",
-  {user: "admin", pass: "admin1234"},
-  (err, res) => {
-    if (err) {
-      console.log(`ERROR: connecting to Database. ${ err }`);
-    }
-    app.listen(port, () => {
-      console.log(`Node server running on http://localhost:${ port }`);
-    });
-  });
+  {user: "admin", pass: "admin1234"});
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
