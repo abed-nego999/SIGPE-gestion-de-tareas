@@ -28,7 +28,7 @@ exports.create_a_sigpe = (req, res) => {
 
 
 exports.read_a_sigpe = (req, res) => {
-  Sigpe.findBy({Numero: req.params.sigpeId}, (err, sigpe) => {
+  Sigpe.find({Numero: req.params.sigpeId}, (err, sigpe) => {
     if (err) {
       res.send(err);
     }
