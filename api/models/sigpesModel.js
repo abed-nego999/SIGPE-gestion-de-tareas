@@ -57,8 +57,7 @@ var SigpeSchema = new Schema({
     type: String
   },
   Fecha_subida: {
-    type: Date,
-    default: Date.now
+    type: Date
   },
   Comentarios: {
       type: String
