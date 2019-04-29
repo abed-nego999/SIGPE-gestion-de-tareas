@@ -12,7 +12,7 @@ module.exports = (app) => {
     .put(sigpes.update_a_sigpe)
     .delete(sigpes.delete_a_sigpe);
 
-  /*app.get('/SIGPE_gestion_tareas.js', (req, res) => {
-    res.render('/SIGPE_gestion_tareas.js');
-  });*/
+  app.get('/SIGPE_gestion_tareas.js', (req, res) => {
+    res.render('../../SIGPE_gestion_tareas.js');
+  });
 };
