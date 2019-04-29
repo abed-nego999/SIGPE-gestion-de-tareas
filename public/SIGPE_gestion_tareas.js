@@ -1,1 +1,3 @@
-alert('HOLA');
+function getAllSigpes() {
+    return $.ajax('/sigpes');
+}
