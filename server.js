@@ -1,6 +1,6 @@
 var express = require('express'),
   app = express(),
-  port = process.env.PORT || 8080,
+  port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   Sigpe = require('./api/models/sigpesModel'), //created model loading here
   bodyParser = require('body-parser'),
@@ -14,8 +14,8 @@ mongoose.connect("mongodb+srv://cluster0-f3avm.mongodb.net/test",
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(/^\/(?!sigpes).*$/gm, express.static('public'));
-app.use(/^\/sigpes.*$/gm, sigpesRouter(express));
+app.use(/^\/sigpes.*$/, sigpesRouter(express));
+app.use(/^\/(?!sigpes).*$/, express.static('public'));
 
 app.listen(port);
 

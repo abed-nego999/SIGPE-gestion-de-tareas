@@ -4,7 +4,7 @@ module.exports = (express) => {
 
   var router = express.Router();
 
-  // todoList Routes
+  // Routes
   router.route('/')
     .get(sigpes.list_all_sigpes)
     .post(sigpes.create_a_sigpe);
