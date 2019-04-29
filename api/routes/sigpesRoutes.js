@@ -1,5 +1,5 @@
 'use strict';
-module.exports = (express) => {
+module.exports = (express, next) => {
   var sigpes = require('../controllers/sigpesController');
 
   var router = express.Router();
@@ -14,5 +14,5 @@ module.exports = (express) => {
     .put(sigpes.update_a_sigpe)
     .delete(sigpes.delete_a_sigpe);
 
-    return router;
+  return router;
 };
