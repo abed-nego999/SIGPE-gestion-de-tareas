@@ -1,8 +1,8 @@
 'use strict';
-module.exports = (app) => {
+module.exports = (express) => {
   var sigpes = require('../controllers/sigpesController');
 
-  var router = app.Router();
+  var router = express.Router();
 
   // todoList Routes
   router.route('/sigpes')
