@@ -13,6 +13,6 @@ module.exports = (app) => {
     .delete(sigpes.delete_a_sigpe);
 
   app.get('/SIGPE_gestion_tareas.js', (req, res) => {
-    res.send('/SIGPE_gestion_tareas.js');
+    res.render('/SIGPE_gestion_tareas.js');
   });
 };
