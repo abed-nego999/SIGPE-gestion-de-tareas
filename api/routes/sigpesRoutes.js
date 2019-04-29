@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(app) {
+module.exports = (app) => {
   var sigpes = require('../controllers/sigpesController');
 
   // todoList Routes
@@ -11,4 +11,8 @@ module.exports = function(app) {
     .get(sigpes.read_a_sigpe)
     .put(sigpes.update_a_sigpe)
     .delete(sigpes.delete_a_sigpe);
+
+  app.get('/SIGPE_gestion_tareas.js', (req, res) => {
+    res.redirect('/SIGPE_gestion_tareas.js');
+  });
 };
