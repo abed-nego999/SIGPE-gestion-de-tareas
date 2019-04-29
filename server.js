@@ -15,7 +15,7 @@ mongoose.connect("mongodb+srv://cluster0-f3avm.mongodb.net/test",
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(/^\/sigpes.*$/, bodyParser.json());
 app.use(/^\/sigpes.*$/, sigpesRouter(express));
-app.use(/^(?!sigpes).*$/, express.static('./public'));
+app.use(/^\/(?!sigpes).*$/, express.static('./public'));
 
 app.listen(port);
 
