@@ -2,8 +2,9 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 8080,
   mongoose = require('mongoose'),
-  Task = require('./api/models/sigpesModel'), //created model loading here
-  bodyParser = require('body-parser');
+  Sigpe = require('./api/models/sigpesModel'), //created model loading here
+  bodyParser = require('body-parser'),
+  sigpesRouter = require('./api/routes/sigpesRoutes'); //importing router;
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
@@ -13,10 +14,7 @@ mongoose.connect("mongodb+srv://cluster0-f3avm.mongodb.net/test",
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-
-var routes = require('./api/routes/sigpesRoutes'); //importing route
-routes(app); //register the route
+app.use('/sigpes', sigpesRouter);
 
 
 app.listen(port);
