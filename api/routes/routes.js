@@ -14,7 +14,7 @@ module.exports = (express, next) => {
     .put(sigpes.update_a_sigpe)
     .delete(sigpes.delete_a_sigpe);
 
-  router.route('/public')
-    .get(express.static('../../public'));
+  /*router.route('/public')
+    .get(express.static('../../public'));*/
   return router;
 };
