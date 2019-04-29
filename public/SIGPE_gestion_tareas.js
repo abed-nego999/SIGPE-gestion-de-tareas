@@ -1,3 +1,3 @@
 function getAllSigpes() {
-    return $.ajax('/sigpes');
+    return $.ajax('https://lit-waters-66346.herokuapp.com/sigpes');
 }
