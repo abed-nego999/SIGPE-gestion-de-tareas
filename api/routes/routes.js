@@ -5,14 +5,16 @@ module.exports = (express, next) => {
   var router = express.Router();
 
   // Routes
-  router.route('/')
+  router.route('/sigpe')
     .get(sigpes.list_all_sigpes)
     .post(sigpes.create_a_sigpe);
 
-  router.route('/:sigpeId')
+  router.route('/sigpe/:sigpeId')
     .get(sigpes.read_a_sigpe)
     .put(sigpes.update_a_sigpe)
     .delete(sigpes.delete_a_sigpe);
 
+  router.route(/^\/(?!sigpe).*$/)
+    .get(express.static('../../public'));
   return router;
 };
