@@ -4,7 +4,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   Sigpe = require('./api/models/sigpesModel'), //created model loading here
   bodyParser = require('body-parser'),
-  sigpesRouter = require('./api/routes/routes'); //importing router;
+  sigpesRouter = require('./api/routes/sigpesRouter'); //importing router;
   
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
