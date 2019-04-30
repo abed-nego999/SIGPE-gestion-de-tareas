@@ -29,9 +29,9 @@ var SigpeSchema = new Schema({
     type: String
   },
   Estado: {
-    type: Schema.Types.Mixed,
-    default: {Name: "Verde",
-        Color: "#00FF00"}
+    type: String,
+    enum: ['Verde', 'Amarillo', 'Naranja', 'Rojo'],
+    default: 'Verde'
   },
   Fecha_llegada: {
     type: Date,
@@ -56,7 +56,7 @@ var SigpeSchema = new Schema({
       type: String
   },
   Elementos: {
-    type: [String]
+    type: String
   }
 });
 

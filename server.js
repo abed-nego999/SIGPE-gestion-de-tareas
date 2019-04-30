@@ -2,7 +2,7 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  Sigpe = require('./api/models/sigpesModel'), //created model loading here
+  sigpeModel = require('./api/models/sigpesModel'), //created model loading here
   bodyParser = require('body-parser'),
   sigpesRouter = require('./api/routes/sigpesRouter'); //importing router;
   
