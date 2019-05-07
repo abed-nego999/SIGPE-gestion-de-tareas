@@ -23,6 +23,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "mongoose": "^5.5.4",
-    "moongoose": "0.0.5"
+    "moongoose": "0.0.5",
+    "officegen": "^0.6.0"
   }
 }
