@@ -8,10 +8,10 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
-				<table id="sigpeList" class="table">
-					<thead>
+				<table id="sigpeList" class="table table-bordered table-hover table-sm">
+					<thead class="thead-light">
 						<tr>
-							<th scope="col">#</th>
+							<th scope="col" class="d-none">#</th>
 							<th scope="col">Numero</th>
 							<th scope="col">Tipo</th>
 							<th scope="col">Ámbito</th>
@@ -27,6 +27,7 @@
 							<th scope="col">Fecha de subida</th>
 							<th scope="col">Comentarios</th>
 							<th scope="col">Elementos</th>
+							<th scope="col">Acciones</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -35,84 +36,101 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12">
-				<form id="sigpeForm" method="post">
-					<div>
-						<label for="Numero">Numero</label>
-						<input type="text" name="Numero" id="Numero" placeholder="String" />
-					</div>
-					<div>
-						<label for="Tipo">Tipo</label>
-						<select name="Tipo" id="Tipo">
-							<option value="Petición">Petición</option>
-							<option value="Incidencia">Incidencia</option>
-						</select>
-					</div>
-					<div>
-						<label for="Ambito">Ambito</label>
-						<select name="Ambito" id="Ambito">
-							<option value="Público">Público</option>
-							<option value="Privado">Privado</option>
-						</select>
-					</div>
-					<div>
-						<label for="Reutilizada">Reutilizada</label>
-						<select name="Reutilizada" id="Reutilizada">
-							<option value="true">Si</option>
-							<option value="false" selected>No</option>
-						</select>
-					</div>
-					<div>
-						<label for="Titulo">Titulo</label>
-						<input type="text" name="Titulo" id="Titulo" placeholder="String" />
-					</div>
-					<div>
-						<label for="Descripcion">Descripcion</label>
-						<input type="text" name="Descripcion" id="Descripcion" placeholder="String" />
-					</div>
-					<div>
-						<label for="Estado">Estado</label>
-						<select name="Estado" id="Estado">
-							<option value="Verde">Verde</option>
-							<option value="Amarillo">Amarillo</option>
-							<option value="Naranja">Naranja</option>
-							<option value="Rojo">Rojo</option>
-						</select>
-					</div>
-					<div>
-						<label for="Fecha_llegada">Fecha_llegada</label>
-						<input type="text" name="Fecha_llegada" id="Fecha_llegada" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
-					</div>
-					<div>
-						<label for="Fecha_salida">Fecha_salida</label>
-						<input type="text" name="Fecha_salida" id="Fecha_salida" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
-					</div>
-					<div>
-						<label for="Tecnico_devoteam">Tecnico_devoteam</label>
-						<input type="text" name="Tecnico_devoteam" id="Tecnico_devoteam" placeholder="String" />
-					</div>
-					<div>
-						<label for="Tecnico_rsi">Tecnico_rsi</label>
-						<input type="text" name="Tecnico_rsi" id="Tecnico_rsi" placeholder="String" />
-					</div>
-					<div>
-						<label for="Funcional">Funcional</label>
-						<input type="text" name="Funcional" id="Funcional" placeholder="String" />
-					</div>
-					<div>
-						<label for="Fecha_subida">Fecha_subida</label>
-						<input type="text" name="Fecha_subida" id="Fecha_subida" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
-					</div>
-					<div>
-						<label for="Comentarios">Comentarios</label>
-						<input type="text" name="Comentarios" id="Comentarios" placeholder="String" />
-					</div>
-					<div>
-						<label for="Elementos">Elementos</label>
-						<input type="text" name="Elementos" id="Elementos" placeholder="String" />
-					</div>
-					<button id="postSigpeButton">Nuevo sigpe</button>
-				</form>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newSigpeModal">Nuevo SIGPE</button>
+		</div>
+	</div>
+	<div class="modal" tabindex="-1" role="dialog" id="newSigpeModal">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="sigpeForm" method="post">
+						<div class="form-group">
+							<label for="Numero">Numero</label>
+							<input class="form-control" type="text" name="Numero" id="Numero" placeholder="String" />
+						</div>
+						<div class="form-group">
+							<label for="Tipo">Tipo</label>
+							<select class="form-control" name="Tipo" id="Tipo">
+								<option value="Petición">Petición</option>
+								<option value="Incidencia">Incidencia</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="Ambito">Ambito</label>
+							<select class="form-control" name="Ambito" id="Ambito">
+								<option value="Público">Público</option>
+								<option value="Privado">Privado</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="Reutilizada">Reutilizada</label>
+							<select class="form-control" name="Reutilizada" id="Reutilizada">
+								<option value="true">Si</option>
+								<option value="false" selected>No</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="Titulo">Titulo</label>
+							<input class="form-control" type="text" name="Titulo" id="Titulo" placeholder="String" />
+						</div>
+						<div class="form-group">
+							<label for="Descripcion">Descripcion</label>
+							<textarea class="form-control" name="Descripcion" id="Descripcion" placeholder="String"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="Estado">Estado</label>
+							<select class="form-control" class="form-control" name="Estado" id="Estado">
+								<option value="Verde">Verde</option>
+								<option value="Amarillo">Amarillo</option>
+								<option value="Naranja">Naranja</option>
+								<option value="Rojo">Rojo</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="Fecha_llegada">Fecha_llegada</label>
+							<input class="form-control" type="text" name="Fecha_llegada" id="Fecha_llegada" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
+						</div>
+						<div class="form-group">
+							<label for="Fecha_salida">Fecha_salida</label>
+							<input class="form-control" type="text" name="Fecha_salida" id="Fecha_salida" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
+						</div>
+						<div class="form-group">
+							<label for="Tecnico_devoteam">Tecnico_devoteam</label>
+							<input class="form-control" type="text" name="Tecnico_devoteam" id="Tecnico_devoteam" placeholder="String" />
+						</div>
+						<div class="form-group">
+							<label for="Tecnico_rsi">Tecnico_rsi</label>
+							<input class="form-control" type="text" name="Tecnico_rsi" id="Tecnico_rsi" placeholder="String" />
+						</div>
+						<div class="form-group">
+							<label for="Funcional">Funcional</label>
+							<input class="form-control" type="text" name="Funcional" id="Funcional" placeholder="String" />
+						</div>
+						<div class="form-group">
+							<label for="Fecha_subida">Fecha_subida</label>
+							<input class="form-control" type="text" name="Fecha_subida" id="Fecha_subida" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
+						</div>
+						<div class="form-group">
+							<label for="Comentarios">Comentarios</label>
+							<textarea class="form-control" name="Comentarios" id="Comentarios" placeholder="String"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="Elementos">Elementos</label>
+							<input class="form-control" type="text" name="Elementos" id="Elementos" placeholder="String" />
+						</div>
+						
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+					<button id="postSigpeButton" type="button" class="btn btn-primary" data-dismiss="modal">Nuevo sigpe</button>
+				</div>
 			</div>
 		</div>
 	</div>
