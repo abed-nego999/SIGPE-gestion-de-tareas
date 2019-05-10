@@ -19,10 +19,17 @@
  * 
  */
 
-function getDeleteButton (id, name) {
-    var boton = $('<button></button>');
+function getDeleteButton (id, text, title) {
+    var boton = $('<a></a>');
     var newClass = 'eliminarSigpe_' + id;
-    boton.attr('id', newClass).addClass('btn').addClass('btn-danger').html(name).click(deleteSigpe);
+    boton.attr('id', newClass).html(text).attr('href', '#').attr('title', title).click(deleteSigpe);
+    return boton;
+}
+
+function getModifyButton (id, text, title) {
+    var boton = $('<a></a>');
+    var newClass = 'modificarSigpe_' + id;
+    boton.attr('id', newClass).html(text).attr('href', '#').attr('title', title).click(deleteSigpe);
     return boton;
 }
 
@@ -49,7 +56,7 @@ function reloadList () {
             newRow.append($('<td></td>').html(sigpe.Fecha_subida));
             newRow.append($('<td></td>').html(sigpe.Comentarios));
             newRow.append($('<td></td>').html(sigpe.Elementos));
-            newRow.append($('<td></td>').html(getDeleteButton(sigpe._id, 'Eliminar')));
+            newRow.append($('<td></td>').append(getModifyButton(sigpe._id, '♻️', 'Modificar')).append(getDeleteButton(sigpe._id, '🗑️', 'Eliminar')));
             list.append(newRow);
         }
     });
