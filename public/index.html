@@ -5,87 +5,117 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
 <body>
-	<h1>Lista de SIGPES:</h1>
-	<div id="sigpeList"></div>
-	<hr />
-	<h1>Formulario de nuevos SIGPES:</h1>
-	<form id="sigpeForm" method="post">
-		<div>
-			<label for="Numero">Numero</label>
-			<input type="text" name="Numero" id="Numero" placeholder="String" />
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<table id="sigpeList" class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Numero</th>
+							<th scope="col">Tipo</th>
+							<th scope="col">Ámbito</th>
+							<th scope="col">Reutilizada</th>
+							<th scope="col">Título</th>
+							<th scope="col">Descripción</th>
+							<th scope="col">Estado</th>
+							<th scope="col">Fecha de llegada</th>
+							<th scope="col">Fecha de salida</th>
+							<th scope="col">Técnico Devoteam</th>
+							<th scope="col">Técnico RSI</th>
+							<th scope="col">Funcional</th>
+							<th scope="col">Fecha de subida</th>
+							<th scope="col">Comentarios</th>
+							<th scope="col">Elementos</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		<div>
-			<label for="Tipo">Tipo</label>
-			<select name="Tipo" id="Tipo">
-				<option value="Petición">Petición</option>
-				<option value="Incidencia">Incidencia</option>
-			</select>
+		<div class="row">
+			<div class="col-12">
+				<form id="sigpeForm" method="post">
+					<div>
+						<label for="Numero">Numero</label>
+						<input type="text" name="Numero" id="Numero" placeholder="String" />
+					</div>
+					<div>
+						<label for="Tipo">Tipo</label>
+						<select name="Tipo" id="Tipo">
+							<option value="Petición">Petición</option>
+							<option value="Incidencia">Incidencia</option>
+						</select>
+					</div>
+					<div>
+						<label for="Ambito">Ambito</label>
+						<select name="Ambito" id="Ambito">
+							<option value="Público">Público</option>
+							<option value="Privado">Privado</option>
+						</select>
+					</div>
+					<div>
+						<label for="Reutilizada">Reutilizada</label>
+						<select name="Reutilizada" id="Reutilizada">
+							<option value="true">Si</option>
+							<option value="false" selected>No</option>
+						</select>
+					</div>
+					<div>
+						<label for="Titulo">Titulo</label>
+						<input type="text" name="Titulo" id="Titulo" placeholder="String" />
+					</div>
+					<div>
+						<label for="Descripcion">Descripcion</label>
+						<input type="text" name="Descripcion" id="Descripcion" placeholder="String" />
+					</div>
+					<div>
+						<label for="Estado">Estado</label>
+						<select name="Estado" id="Estado">
+							<option value="Verde">Verde</option>
+							<option value="Amarillo">Amarillo</option>
+							<option value="Naranja">Naranja</option>
+							<option value="Rojo">Rojo</option>
+						</select>
+					</div>
+					<div>
+						<label for="Fecha_llegada">Fecha_llegada</label>
+						<input type="text" name="Fecha_llegada" id="Fecha_llegada" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
+					</div>
+					<div>
+						<label for="Fecha_salida">Fecha_salida</label>
+						<input type="text" name="Fecha_salida" id="Fecha_salida" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
+					</div>
+					<div>
+						<label for="Tecnico_devoteam">Tecnico_devoteam</label>
+						<input type="text" name="Tecnico_devoteam" id="Tecnico_devoteam" placeholder="String" />
+					</div>
+					<div>
+						<label for="Tecnico_rsi">Tecnico_rsi</label>
+						<input type="text" name="Tecnico_rsi" id="Tecnico_rsi" placeholder="String" />
+					</div>
+					<div>
+						<label for="Funcional">Funcional</label>
+						<input type="text" name="Funcional" id="Funcional" placeholder="String" />
+					</div>
+					<div>
+						<label for="Fecha_subida">Fecha_subida</label>
+						<input type="text" name="Fecha_subida" id="Fecha_subida" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
+					</div>
+					<div>
+						<label for="Comentarios">Comentarios</label>
+						<input type="text" name="Comentarios" id="Comentarios" placeholder="String" />
+					</div>
+					<div>
+						<label for="Elementos">Elementos</label>
+						<input type="text" name="Elementos" id="Elementos" placeholder="String" />
+					</div>
+					<button id="postSigpeButton">Nuevo sigpe</button>
+				</form>
+			</div>
 		</div>
-		<div>
-			<label for="Ambito">Ambito</label>
-			<select name="Ambito" id="Ambito">
-				<option value="Público">Público</option>
-				<option value="Privado">Privado</option>
-			</select>
-		</div>
-		<div>
-			<label for="Reutilizada">Reutilizada</label>
-			<select name="Reutilizada" id="Reutilizada">
-				<option value="true">Si</option>
-				<option value="false" selected>No</option>
-			</select>
-		</div>
-		<div>
-			<label for="Titulo">Titulo</label>
-			<input type="text" name="Titulo" id="Titulo" placeholder="String" />
-		</div>
-		<div>
-			<label for="Descripcion">Descripcion</label>
-			<input type="text" name="Descripcion" id="Descripcion" placeholder="String" />
-		</div>
-		<div>
-			<label for="Estado">Estado</label>
-			<select name="Estado" id="Estado">
-				<option value="Verde">Verde</option>
-				<option value="Amarillo">Amarillo</option>
-				<option value="Naranja">Naranja</option>
-				<option value="Rojo">Rojo</option>
-			</select>
-		</div>
-		<div>
-			<label for="Fecha_llegada">Fecha_llegada</label>
-			<input type="text" name="Fecha_llegada" id="Fecha_llegada" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
-		</div>
-		<div>
-			<label for="Fecha_salida">Fecha_salida</label>
-			<input type="text" name="Fecha_salida" id="Fecha_salida" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
-		</div>
-		<div>
-			<label for="Tecnico_devoteam">Tecnico_devoteam</label>
-			<input type="text" name="Tecnico_devoteam" id="Tecnico_devoteam" placeholder="String" />
-		</div>
-		<div>
-			<label for="Tecnico_rsi">Tecnico_rsi</label>
-			<input type="text" name="Tecnico_rsi" id="Tecnico_rsi" placeholder="String" />
-		</div>
-		<div>
-			<label for="Funcional">Funcional</label>
-			<input type="text" name="Funcional" id="Funcional" placeholder="String" />
-		</div>
-		<div>
-			<label for="Fecha_subida">Fecha_subida</label>
-			<input type="text" name="Fecha_subida" id="Fecha_subida" placeholder="yyyy-MM-ddTHH:mm:ss.SSSZ" />
-		</div>
-		<div>
-			<label for="Comentarios">Comentarios</label>
-			<input type="text" name="Comentarios" id="Comentarios" placeholder="String" />
-		</div>
-		<div>
-			<label for="Elementos">Elementos</label>
-			<input type="text" name="Elementos" id="Elementos" placeholder="String" />
-		</div>
-		<button id="postSigpeButton">Nuevo sigpe</button>
-	</form>
+	</div>
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/SIGPE_gestion_tareas.js"></script>

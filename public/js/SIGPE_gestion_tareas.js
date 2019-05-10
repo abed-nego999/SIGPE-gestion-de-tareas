@@ -29,19 +29,31 @@ function getDeleteButton (id, name) {
 }
 
 function reloadList () {
-    var list = $('#sigpeList');
+    var list = $('#sigpeList tbody');
     $.get('sigpes').done((data) => {
         list.html('');
         for (sigpeIndex in data) {
             var sigpe = data[sigpeIndex];
-            var newDiv = $('<div></div>');
-            var newParagraph = $('<p></p>');
-            newDiv.attr('id', 'sigpe_' + sigpe._id);
-            newDiv.addClass('cuadroSigpes');
-            newParagraph.html(JSON.stringify(data[sigpeIndex]));
-            newDiv.append(newParagraph);
-            newDiv.append(getDeleteButton(sigpe._id, 'Eliminar SIGPE "' + sigpe.Titulo + '"'));
-            list.append(newDiv);
+            var newRow = $('<tr></tr>');
+            newRow.append($('<td></td>').attr('scope', 'row').html(sigpe._id));
+            newRow.append($('<td></td>').html(sigpe._id));
+            newRow.append($('<td></td>').html(sigpe.Numero));
+            newRow.append($('<td></td>').html(sigpe.Tipo));
+            newRow.append($('<td></td>').html(sigpe.Ambito));
+            newRow.append($('<td></td>').html(sigpe.Reutilizada));
+            newRow.append($('<td></td>').html(sigpe.Titulo));
+            newRow.append($('<td></td>').html(sigpe.Descripcion));
+            newRow.append($('<td></td>').html(sigpe.Estado));
+            newRow.append($('<td></td>').html(sigpe.Fecha_llegada));
+            newRow.append($('<td></td>').html(sigpe.Fecha_salida));
+            newRow.append($('<td></td>').html(sigpe.Tecnico_devoteam));
+            newRow.append($('<td></td>').html(sigpe.Tecnico_rsi));
+            newRow.append($('<td></td>').html(sigpe.Funcional));
+            newRow.append($('<td></td>').html(sigpe.Fecha_subida));
+            newRow.append($('<td></td>').html(sigpe.Comentarios));
+            newRow.append($('<td></td>').html(sigpe.Elementos));
+            newRow.append($('<td></td>').html(getDeleteButton(sigpe._id, 'Eliminar SIGPE "' + sigpe.Titulo + '"')));
+            list.append(newRow);
         }
     });
 };
