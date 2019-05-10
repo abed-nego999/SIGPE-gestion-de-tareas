@@ -15,7 +15,11 @@ mongoose.connect("mongodb+srv://cluster0-f3avm.mongodb.net/test",
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/sigpes", bodyParser.json());
 app.use("/sigpes", sigpesRouter(express));
-app.use(express.static('./public'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/js', express.static(__dirname + '/node_modules/popper.js/dist'));
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+app.use(express.static(__dirname + '/public'));
 
 app.listen(port);
 
