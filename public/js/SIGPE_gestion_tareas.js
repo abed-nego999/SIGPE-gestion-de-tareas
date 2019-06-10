@@ -56,7 +56,19 @@ function reloadList () {
 
 function submitNewSigpe (event) {
     event.preventDefault();
-    $.post('sigpes', $("#sigpeForm").serialize()).done(() => {
+    $.post('sigpes', $("#newSigpeForm").serialize()).done(() => {
+        reloadList();
+    }).fail((jqXHR, textStatus, errorThrown) => {
+        alert(jqXHR);
+        alert(textStatus);
+        alert(errorThrown);
+    });
+}
+
+function replaceSigpe (event) {
+    event.preventDefault();
+    $.ajax({url: 'sigpes/' + _id,
+        type: 'put'}, $("#saveSigpeForm").serialize()).done(() => {
         reloadList();
     }).fail((jqXHR, textStatus, errorThrown) => {
         alert(jqXHR);
@@ -83,8 +95,8 @@ function modifySigpe (event) {
     var _id = $(this).attr('id').substr('modificarSigpe_'.length);
     $.ajax({url: 'sigpes/' + _id,
         type: 'get'}).done((data) => {
-        populate($("#sigpeForm"), data);
-        $('#newSigpeModal').modal('show');
+        populate($("#saveSigpeForm"), data);
+        $('#modifySigpeModal').modal('show');
     }).fail((jqXHR, textStatus, errorThrown) => {
         alert(jqXHR);
         alert(textStatus);
@@ -94,6 +106,7 @@ function modifySigpe (event) {
 
 $(document).ready(() => {
     $('#postSigpeButton').click(submitNewSigpe);
+    $('#saveSigpeButton').click(replaceSigpe);
     reloadList();
 })
 
