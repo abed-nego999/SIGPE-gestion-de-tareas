@@ -19,17 +19,10 @@
  * 
  */
 
-function getDeleteButton (id, text, title) {
+function getButton (id, text, title, action) {
     var boton = $('<a></a>');
     var newClass = 'eliminarSigpe_' + id;
-    boton.attr('id', newClass).html(text).attr('href', '#').attr('title', title).click(deleteSigpe);
-    return boton;
-}
-
-function getModifyButton (id, text, title) {
-    var boton = $('<a></a>');
-    var newClass = 'modificarSigpe_' + id;
-    boton.attr('id', newClass).html(text).attr('href', '#').attr('title', title).click(deleteSigpe);
+    boton.attr('id', newClass).html(text).attr('href', '#').attr('title', title).click(action);
     return boton;
 }
 
@@ -56,7 +49,7 @@ function reloadList () {
             newRow.append($('<td></td>').html(sigpe.Fecha_subida));
             newRow.append($('<td></td>').html(sigpe.Comentarios));
             newRow.append($('<td></td>').html(sigpe.Elementos));
-            newRow.append($('<td></td>').append(getModifyButton(sigpe._id, '♻️', 'Modificar')).append(getDeleteButton(sigpe._id, '🗑️', 'Eliminar')));
+            newRow.append($('<td></td>').append(getButton('modificarSigpe_' + sigpe._id, '♻️', 'Modificar', modifySigpe)).append(getButton('eliminarSigpe_' + sigpe._id, '🗑️', 'Eliminar', deleteSigpe)));
             list.append(newRow);
         }
     });
@@ -86,7 +79,37 @@ function deleteSigpe (event) {
     });
 }
 
+function modifySigpe (event) {
+    event.preventDefault();
+    var _id = $(this).attr('id').substr('modificarSigpe_'.length);
+    $.ajax({url: 'sigpes/' + _id,
+        type: 'get'}).done((data) => {
+        populate($("#sigpeForm"), data);
+        $('#newSigpeModal').modal('show');
+    }).fail((jqXHR, textStatus, errorThrown) => {
+        alert(jqXHR);
+        alert(textStatus);
+        alert(errorThrown);
+    });
+}
+
 $(document).ready(() => {
     $('#postSigpeButton').click(submitNewSigpe);
     reloadList();
 })
+
+function populate(form, data) {
+    $.each(data, (key, value) => {
+        var ctrl = $('[name=' + key + ']', form);
+        switch(ctrl.prop("type")) { 
+            case "radio": case "checkbox":   
+                ctrl.each(() => {
+                    if($(this).attr('value') == value)
+                        $(this).attr("checked",value);
+                });   
+                break;  
+            default:
+                ctrl.val(value); 
+        }
+    });
+}
