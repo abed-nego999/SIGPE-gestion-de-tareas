@@ -98,7 +98,7 @@ $(document).ready(() => {
 })
 
 function populate(form, data) {
-    $.each(data, (key, value) => {
+    $.each(data[0], (key, value) => {
         var ctrl = $('[name=' + key + ']', form);
         switch(ctrl.prop("type")) { 
             case "radio": case "checkbox":   
