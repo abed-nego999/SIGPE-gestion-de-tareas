@@ -21,8 +21,7 @@
 
 function getButton (id, text, title, action) {
     var boton = $('<a></a>');
-    var newClass = 'eliminarSigpe_' + id;
-    boton.attr('id', newClass).html(text).attr('href', '#').attr('title', title).click(action);
+    boton.attr('id', id).html(text).attr('href', '#').attr('title', title).click(action);
     return boton;
 }
 
